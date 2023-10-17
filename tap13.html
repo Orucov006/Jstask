@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+    table {
+        margin: auto;
+        position: relative;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    button {
+        color: white;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        background: #333;
+    }
+
+    .blue button {
+        background-color: blue;
+    }
+
+    .red button {
+        background: red;
+    }
+
+    .modal {
+        width: 30%;
+        height: 200px;
+        background-color: white;
+        border: 1px solid grey;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 35%;
+        display: none;
+    }
+
+    .redm {
+        background-color: red !important;
+    }
+
+    .bluem {
+        background-color: blue !important;
+    }
+
+    .greenm {
+        background-color: green !important;
+    }
+
+    .yellowm {
+        background-color: rgb(138, 138, 35) !important;
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .top p {
+        width: 10%;
+        text-align: center;
+        font-size: 35px;
+    }
+
+    .orta button {
+        padding: 5px 22px;
+        margin: 5px;
+    }
+
+    .low button {
+        padding: 5px 22px;
+        margin: 5px;
+    }
+
+    /* // let table = document.querySelector("table")
+        // let firstTds = table.querySelectorAll("td:nth-child(3)")
+        // let secondTds = table.querySelectorAll("td:nth-child(4)")
+        // blue.addEventListener("click", function (){
+        //     firstTds.forEach(td => td.classList.add("blue"))
+        // })
+        // red.addEventListener("click", function (){
+        //     secondTds.forEach(td => td.classList.add("red"))
+        // })
+        // } */
+</style>
+
+<body>
+    <table border="1" , width="60%">
+
+        <thead>
+            <tr>
+                <th rowspan="3">№</th>
+                <th rowspan="3"> S.A.A</th>
+                <th>16.10.2022</th>
+                <th>16.10.2022</th>
+                <th>19.10.2023</th>
+            </tr>
+            <tr class="blue">
+                <th><button>i/e</button></th>
+                <th><button>i/e</button></th>
+                <th><button>i/e</button></th>
+            </tr>
+            <tr class="red">
+                <th><button>q/b</button></th>
+                <th><button>q/b</button></th>
+                <th><button>q/b</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Abdullayev Pərviz </td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Abdullayev Ruslan </td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Babayev Baba </td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Mürşüdov İqbal </td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Orucov Yusif</td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+                <td><button>d/e</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal">
+        <div class="top">
+            <h1>Qiymet</h1>
+            <p onclick="txt()"><i class="fas fa-times"></i></p>
+        </div>
+        <div class="orta">
+            <button onclick="sec(this)" class="redm">1</button>
+            <button onclick="sec(this)" class="redm">0</button>
+            <button onclick="sec(this)" class="greenm">10</button>
+            <button onclick="sec(this)" class="redm">2</button>
+            <button onclick="sec(this)" class="redm">3</button>
+            <button onclick="sec(this)" class="redm">4</button>
+            <button onclick="sec(this)" class="yellowm">5</button>
+            <button onclick="sec(this)" class="yellowm">6</button>
+        </div>
+        <div class="low">
+            <button onclick="sec(this)" class="yellowm">7</button>
+            <button onclick="sec(this)" class="greenm">8</button>
+            <button onclick="sec(this)" class="greenm">9</button>
+            <button onclick="sec(this)" class="bluem">b.</button>
+            <button onclick="sec(this)" class="bluem">i/e</button>
+            <button onclick="sec(this)" class="redm">q/b</button>
+
+        </div>
+    </div>
+    <script>
+        let red = document.querySelectorAll(".red button")
+        let blue = document.querySelectorAll(".blue button")
+        let tr = document.querySelectorAll("tbody tr")
+        let trBtn = document.querySelectorAll("tbody tr button")
+        let m = document.querySelector(".modal")
+        let up = document.querySelector(".up")
+
+        blue.forEach((ie, index) => {
+            ie.addEventListener("click", function () {
+                tr.forEach(y => {
+                    if (y.children[index + 2].children[0].innerHTML == "d/e") {
+                        y.children[index + 2].children[0].style.backgroundColor = "blue";
+                        y.children[index + 2].children[0].innerHTML = "i/e";
+                    }
+
+                })
+            })
+        });
+        red.forEach((qb, index) => {
+            qb.addEventListener("click", function () {
+                tr.forEach(y => {
+                    if (y.children[index + 2].children[0].innerHTML == "d/e") {
+                        y.children[index + 2].children[0].style.backgroundColor = "red"
+                        y.children[index + 2].children[0].innerHTML = "q/b";
+                    }
+
+                })
+
+            })
+        });
+
+        let element = "";
+        trBtn.forEach((de) => {
+            de.addEventListener("click", function () {
+                if (de.innerHTML == "d/e") {
+                    m.style.display = 'block'
+                    element = de;
+                }
+                else {
+                    alert("Artiq qiymet daxil etmisiniz")
+                }
+            })
+        });
+
+        function sec(x) {
+            m.style.display = 'none'
+            element.innerHTML = x.innerHTML;
+            element.className = x.className;
+            console.log(x.innerHTML)
+            console.log(x.className)
+
+        }
+        function txt() {
+            m.style.display = 'none'
+        }
+    </script>
+</body>
+
+</html>

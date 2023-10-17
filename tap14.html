@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .teq {
+        width: 20%;
+        background-color: red;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    table {
+        margin: auto;
+        position: relative;
+        display: none;
+    }
+
+    input {
+        width: 73%;
+        /* background-color: aqua; */
+    }
+
+    th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    td {
+        text-align: center;
+
+    }
+
+    td button {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        font-size: 15px;
+    }
+
+    .modal {
+        width: 20%;
+        height: 50px;
+        background-color: white;
+        border: 1px solid black;
+        display: none;
+        position: absolute;
+        top: 15%;
+        left: 35%;
+        padding: 10px 35px;
+    }
+
+    .modal button {
+        width: 30%;
+        height: 40px;
+        color: white;
+        border: none;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .yellow {
+        background-color: rgb(197, 197, 68);
+    }
+
+    .red {
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div class="teq">
+        <input type="number">
+        <button onclick="add()">Tesdiq etmek</button>
+    </div>
+    <table border="1" , width="50%" , height="auto" ;>
+        <thead>
+            <tr>
+                <th>N</th>
+                <th>S.A.A</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div class="modal">
+        <button qiymet="" class="green">tam</button>
+        <button qiymet="" class="yellow">natamam</button>
+        <button qiymet="0" class="red">0</button>
+    </div>
+</body>
+<script>
+    let names = ["Əkbərli Ərəstun", "İbadov Elnur", "Qurbanzadə Sədi", "Qasımlı Üzeyir", "Orucov Yusif"]
+    let table = document.querySelector("table")
+    let teq = document.querySelector(".teq")
+    let modal = document.querySelector('.modal')
+    let inp = document.querySelector('input')
+    let tbody = document.querySelector('tbody')
+    let thead = document.querySelector("thead>tr")
+    let tam;
+    let natam;
+    let say;
+    let sifir = 0;
+    let yekun = " ";
+    let labQiymet = 0
+    function add() {
+        table.style.display = 'table';
+        teq.style.display = 'none';
+        say = Number(inp.value)
+        tam = 10 / say;
+        natam = tam / 2;
+        modal.children[0].setAttribute("qiymet", tam)
+        modal.children[1].setAttribute("qiymet", natam)
+
+
+        names.forEach((bir, iki) => {
+            yekun =
+                `<tr>
+            <td>${iki + 1}</td>     
+            <td>${bir}</td>
+        </tr>`;
+            tbody.innerHTML += yekun;
+        })
+
+
+        let kodBody = "";
+        let kodHead = "";
+        for (let i = 1; i <= inp.value; i++) {
+            kodBody += `<td>
+                <button>d/e</button>
+                </td>`
+            kodHead += `<th>
+                    Lab işi- N${i}
+                    </th>`
+        }
+        kodHead += `<th>Netice</th>`
+        thead.innerHTML += kodHead;
+
+
+        let tbodyTr;
+        tbodyTr = document.querySelectorAll('tbody tr')
+        tbodyTr.forEach((m) => {
+            m.innerHTML += kodBody
+            m.innerHTML += `<td>0.0</td>`
+        })
+
+
+        let a;
+        let btn;
+        btn = document.querySelectorAll('tbody td button')
+        btn.forEach((i) => {
+            i.addEventListener("click", function () {
+                a = i;
+                modal.style.display = 'block'
+            })
+        })
+ 
+
+        let butn = "";
+        butn = document.querySelectorAll('.modal>button')
+        butn.forEach((y) => {
+            y.addEventListener("click", function () {
+                a.innerHTML = y.innerHTML
+                a.className = y.className
+                a.setAttribute("score", y.getAttribute("qiymet"));
+                modal.style.display = 'none'
+                labQiymet = 0
+                for (let i = 2; i <= say + 1; i++) {
+                    labQiymet += Number(a.parentElement.parentElement.children[i].children[0].getAttribute("score"))
+                    console.log(labQiymet)
+                    a.parentElement.parentElement.children[say + 2].innerText = labQiymet
+                }
+            })
+        })
+    }
+
+
+
+</script>
+
+</html>
